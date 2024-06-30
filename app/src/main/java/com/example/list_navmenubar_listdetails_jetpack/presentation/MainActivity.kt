@@ -27,7 +27,9 @@ import com.example.list_navmenubar_listdetails_jetpack.presentation.ui.Screens.N
 import com.example.list_navmenubar_listdetails_jetpack.presentation.ui.Screens.SettingsScreen
 import com.example.list_navmenubar_listdetails_jetpack.presentation.ui.theme.ListnavmenubarlistdetailsjetpackTheme
 import com.example.list_navmenubar_listdetails_jetpack.viewModel.CoinListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {

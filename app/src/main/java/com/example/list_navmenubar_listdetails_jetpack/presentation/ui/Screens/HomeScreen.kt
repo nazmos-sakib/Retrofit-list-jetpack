@@ -51,7 +51,7 @@ fun HomeScreen(
                     .clickable {
                         onItemClick(item.id)
                     },
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.SpaceBetween
 
                 ) {
                     Text(text = (index+1).toString())

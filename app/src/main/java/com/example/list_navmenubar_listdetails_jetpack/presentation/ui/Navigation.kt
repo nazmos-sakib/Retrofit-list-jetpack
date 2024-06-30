@@ -15,15 +15,19 @@ import com.example.list_navmenubar_listdetails_jetpack.presentation.ui.Screens.N
 import com.example.list_navmenubar_listdetails_jetpack.presentation.ui.Screens.SettingsScreen
 import com.example.list_navmenubar_listdetails_jetpack.viewModel.CoinDetailsViewModel
 import com.example.list_navmenubar_listdetails_jetpack.viewModel.CoinListViewModel
+import javax.inject.Inject
 
 
 @Composable
 fun Navigation(navController: NavHostController){
-    val vm = CoinListViewModel()
+
+    val vmList = CoinListViewModel()
+    val vmDetails = CoinDetailsViewModel()
+    //val vmDetails = NewCoinDetailsViewModel()
     NavHost(navController = navController, startDestination = "home"){
         composable("home") {
             HomeScreen(
-                vm=vm,
+                vm=vmList,
                 onItemClick = {
                     navController.navigate("details/$it")
                 }
@@ -49,8 +53,7 @@ fun Navigation(navController: NavHostController){
         ){ param->
             Log.d("->>navigation->>", "Navigation: "+param.arguments?.getString("item"))
             param.arguments?.getString("item")?.let {
-                val vm = CoinDetailsViewModel(it)
-                DetailsViewScreen(vm=vm)
+                DetailsViewScreen(vm=vmDetails,it)
             }
         }//details route end
     }

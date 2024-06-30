@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,23 +24,25 @@ import com.example.list_navmenubar_listdetails_jetpack.viewModel.CoinDetailsView
 
 @Composable
 fun DetailsViewScreen(
-    vm: CoinDetailsViewModel
+    vm: CoinDetailsViewModel,
+    //vm: NewCoinDetailsViewModel,
+    coinId: String
 ) {
     LaunchedEffect(Unit, block = {
-        vm.getCoinDetails()
+        vm.getCoinDetails(coinId)
     })
 
-
+    //val res  = vm.res.observeAsState("")
 
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
-        
-        Text(text = "details")
-        Spacer(modifier = Modifier.height(30.dp))
-        
-        LazyColumn(
+
+        //Text(text = "details")
+        //Spacer(modifier = Modifier.height(30.dp))
+
+        /*LazyColumn(
             modifier = Modifier.fillMaxWidth(),
             contentPadding = PaddingValues(10.dp)
         ) {
@@ -63,7 +67,7 @@ fun DetailsViewScreen(
                 }
 
             }
-        }
-        Text(text = vm.errorMessage)
+        }*/
+        vm.state.value.coinDetails?.let { Text(text = it.name) }
     }
 }

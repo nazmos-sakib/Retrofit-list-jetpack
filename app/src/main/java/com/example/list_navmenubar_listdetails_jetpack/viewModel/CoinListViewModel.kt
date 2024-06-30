@@ -1,21 +1,17 @@
 package com.example.list_navmenubar_listdetails_jetpack.viewModel
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.list_navmenubar_listdetails_jetpack.Data.Model.Coin
-import com.example.list_navmenubar_listdetails_jetpack.Data.Model.dto.CoinDetailDto
 import com.example.list_navmenubar_listdetails_jetpack.Data.Model.dto.CoinDto
 import com.example.list_navmenubar_listdetails_jetpack.model.interfaces.APIService
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CoinListViewModel : ViewModel() {
+class CoinListViewModel @Inject constructor( ) : ViewModel() {
 
     // remember is a part of @Composable
     private val _coinList = mutableStateListOf<CoinDto>()
